@@ -26,7 +26,7 @@ It is transmitted in the same way as delimiter code.
 Delimiter cord and the newline cord are able to set optionally value.
 
 
-### User Program Write ###
+### User Program Writing ###
 
 When the normal operation, the microcontroller can be written the user program by sending a special command.
 
