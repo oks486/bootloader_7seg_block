@@ -131,6 +131,8 @@ CHECK_DELIMITER:
 	MOVWF		TXREG				; Send delimiter code to neighbor block
 	MOVF		RECV_DATA_PRE,W
 	CALL		DISPLAY_SEGMENT		; display LED (argument is W reg)
+	MOVF		BLNKCODE,W
+	MOVWF		RECV_DATA_PRE		; Clear data
 	BRA			GET_USART_DATA
 
 CHECK_NEWLINE:
@@ -142,7 +144,7 @@ CHECK_NEWLINE:
 	MOVLW		NEWLCODE
 	MOVWF		TXREG				; Send newline code to neighbor block
 	MOVF		BLNKCODE,W
-	MOVWF		RECV_DATA_PRE
+	MOVWF		RECV_DATA_PRE		; Clear data
 	CALL		DISPLAY_SEGMENT		; display LED (argument is W reg)
 	BRA			GET_USART_DATA
 

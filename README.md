@@ -18,7 +18,7 @@ This is the default state when the module is supplied power. When the module rec
 
 For example, There are three modules which are connected tandemly. Each module has RX pin on the right side, and TX pin on the left side. The serial data are input to a module of the right-side end, and transmitted in turn to the left-side end.
 
-Then, serial data '1','2','3' are input in order to the right module. Each module store the data '1', '2' or '3' from the left module, and do not display yet. The stored data are displayed to the LED when delimiter code is received next. The delimiter code is transmitted to neighbor module immediately without being stored, therefore each module seemed to turn on simultaneously.
+Then, serial data '1','2','3' are input in order to the right module. Each module store the data '1', '2' or '3' from the left module, and do not display yet. The stored data are displayed to the LED when delimiter code is received next. The stored data cleared after displaying. The delimiter code is transmitted to neighbor module immediately without being stored, therefore each module seemed to turn on simultaneously.
 
 There is "newline code" turning off and clearing stored data all modules, elsewhere. 
 It is transmitted in the same way as delimiter code.
