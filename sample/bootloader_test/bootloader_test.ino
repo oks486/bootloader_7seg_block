@@ -58,6 +58,7 @@ void loop() {
     }
     Serial.write(user_program[i]);
   }
+  delay(100);
 
   // send command for running user program
   for (int i = 0; i < sizeof(command_exec); i++){

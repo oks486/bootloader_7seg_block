@@ -321,6 +321,9 @@ GET_EXADDR:
 	BRA			GET_HEXLINE			; If value is 0, receive following data
 
 WR_DONE:
+	BANKSEL		TXSTA
+	BTFSS		TXSTA,TRMT			; Wait for sending data
+	BRA			$-1
 	RESET							; software reset
 
 WR_ERROR:
