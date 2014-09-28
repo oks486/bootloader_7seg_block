@@ -582,6 +582,15 @@ DISPLAY_SEGMENT:
 	MOVWF		LATA				; PORTA output data
 	MOVWF		LATC				; PORTC output data
 
+CHECK_MINUS_SIGN
+	MOVF		TEMP,W
+	SUBLW		'-'					; Minus sign code check
+	BTFSS		STATUS,Z
+	BRA			CHECK_DOT
+
+	MOVLW		0x10
+	BRA			DISP_PORT_CTRL
+
 CHECK_DOT:
 	BTFSS		TEMP,7				; Dot code (MSB=1) check
 	BRA			CHECK_NUMCODE
@@ -626,7 +635,7 @@ CHECK_A2FCODE2:
 	BRA			DISP_PORT_CTRL
 
 DISP_BLANK:
-	MOVLW		0x10
+	MOVLW		0x11
 
 DISP_PORT_CTRL:
 	MOVWF		TEMP				; Store W value to TEMP
@@ -659,6 +668,7 @@ DISP_PORTA:
 	DT			B'00010000'			; segment data 'D'
 	DT			B'00000000'			; segment data 'E'
 	DT			B'00000000'			; segment data 'F'
+	DT			B'00010000'			; segment data '-'
 	DT			B'00111111'			; segment data ' '
 
 DISP_PORTC:
@@ -679,6 +689,7 @@ DISP_PORTC:
 	DT			B'00100100'			; segment data 'D'
 	DT			B'00000111'			; segment data 'E'
 	DT			B'00010111'			; segment data 'F'
+	DT			B'00111111'			; segment data '-'
 	DT			B'00111111'			; segment data ' '
 
 
